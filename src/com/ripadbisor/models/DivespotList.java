@@ -1,3 +1,15 @@
+/**
+ * La clase DivespotList representa una lista de lugares de buceo (Divespots).
+ * Su objetivo principal es proporcionar una estructura para gestionar una colección
+ * de objetos Divespot, permitiendo agregar, eliminar, buscar y mostrar información
+ * sobre los lugares de buceo registrados.
+ * 
+ * Objetivos:
+ * - Facilitar la gestión de una lista de lugares de buceo.
+ * - Proveer métodos para agregar y eliminar lugares de buceo.
+ * - Permitir la búsqueda de un lugar de buceo por su nombre.
+ * - Mostrar información detallada de todos los lugares de buceo registrados.
+ */
 package com.ripadbisor.models;
 
 import java.util.ArrayList;
