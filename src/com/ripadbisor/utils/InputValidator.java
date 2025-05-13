@@ -1,9 +1,21 @@
+/**
+ * Utility class for input validation, providing methods to parse integers and validate non-empty strings.
+ */
 package com.ripadbisor.utils;
 
 import javax.swing.*;
 
 public class InputValidator {
 
+    /**
+     * Parses a string to an integer, showing an error message if the input is
+     * invalid.
+     *
+     * @param input       the string to parse
+     * @param parentFrame the parent frame for the error dialog
+     * @return the parsed integer
+     * @throws NumberFormatException if the input is not a valid integer
+     */
     public static int parseInt(String input, JFrame parentFrame) {
         try {
             return Integer.parseInt(input);
@@ -14,6 +26,15 @@ public class InputValidator {
         }
     }
 
+    /**
+     * Validates that a string is not empty, showing an error message if it is.
+     *
+     * @param input       the string to validate
+     * @param fieldName   the name of the field for the error message
+     * @param parentFrame the parent frame for the error dialog
+     * @return the trimmed input string
+     * @throws IllegalArgumentException if the input is empty
+     */
     public static String validateNotEmpty(String input, String fieldName, JFrame parentFrame) {
         if (input == null || input.trim().isEmpty()) {
             JOptionPane.showMessageDialog(parentFrame, "The field '" + fieldName + "' can't be empty.", "Error",
