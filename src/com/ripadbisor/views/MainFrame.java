@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
         setLayout(new BorderLayout());
 
         divespotList = new DivespotList();
-        divespotForm = new DivespotForm();
+        divespotForm = new DivespotForm(this, divespotList);
         displayArea = new JTextArea();
         displayArea.setEditable(false);
 
