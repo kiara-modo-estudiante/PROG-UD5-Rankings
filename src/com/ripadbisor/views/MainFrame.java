@@ -2,9 +2,11 @@ package com.ripadbisor.views;
 
 import javax.swing.*;
 import java.awt.*;
+import com.ripadbisor.models.DivespotList;
 
 public class MainFrame extends JFrame {
     private JTextArea displayArea;
+    private DivespotList divespotList;
 
     public MainFrame() {
         setTitle("Divespot Manager");
@@ -12,6 +14,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        divespotList = new DivespotList();
         displayArea = new JTextArea();
         displayArea.setEditable(false);
         add(new JScrollPane(displayArea), BorderLayout.CENTER);
