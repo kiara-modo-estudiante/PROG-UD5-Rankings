@@ -1,11 +1,11 @@
 /**
-* La clase Divespot representa un lugar de buceo con varios atributos
-* como su nombre, ubicación, profundidad máxima, temporada recomendada para bucear,
-* si tiene vida marina y su calificación.
+* The Divespot class represents a diving spot with various attributes
+* such as its name, location, maximum depth, recommended diving season,
+* whether it has marine life, and its rating.
 *
-* Objetivo:
-* Esta clase está diseñada para encapsular los detalles de un lugar de buceo,
-* proporcionando métodos getter y setter para acceder y modificar sus propiedades.
+* Purpose:
+* This class is designed to encapsulate the details of a diving spot,
+* providing getter and setter methods to access and modify its properties.
 */
 package com.ripadbisor.models;
 
