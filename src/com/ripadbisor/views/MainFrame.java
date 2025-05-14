@@ -29,8 +29,4 @@ public class MainFrame extends JFrame {
     public void displayDivespotInfo(String info) {
         displayArea.append(info + "\n");
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MainFrame());
-    }
 }
