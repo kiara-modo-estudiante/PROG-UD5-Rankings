@@ -33,6 +33,11 @@ public class MainFrame extends JFrame {
 
         divespotList = new DivespotList();
 
+        displayArea = new JTextArea();
+        displayArea.setEditable(false);
+        displayArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        add(new JScrollPane(displayArea), BorderLayout.CENTER);
+
         showMainMenu();
     }
 
