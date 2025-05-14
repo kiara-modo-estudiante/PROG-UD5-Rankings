@@ -22,12 +22,12 @@ public class DivespotList {
         divespots = new ArrayList<>();
     }
 
-    // Agregar un Divespot a la lista
+    // Add a new Divespot to the list
     public void addDivespot(Divespot divespot) {
         divespots.add(divespot);
     }
 
-    // Eliminar un Divespot de la lista por nombre
+    // Delete a Divespot from the list by name
     public boolean removeDivespot(String name) {
         for (Divespot divespot : divespots) {
             if (divespot.getName().equals(name)) {
@@ -38,24 +38,19 @@ public class DivespotList {
         return false;
     }
 
-    // Mostrar todos los Divespots en la lista
+    // Show all divespots in the list
     public void showAllDivespots() {
         if (divespots.isEmpty()) {
-            System.out.println("No hay lugares de buceo registrados.");
+            System.out.println("No divespots registered.");
         } else {
             for (Divespot divespot : divespots) {
-                System.out.println("Nombre: " + divespot.getName());
-                System.out.println("Ubicación: " + divespot.getLocation());
-                System.out.println("Profundidad máxima: " + divespot.getMaxDepth() + " metros");
-                System.out.println("Temporada recomendada: " + divespot.getRecommendedSeason());
-                System.out.println("¿Tiene vida marina? " + (divespot.isHasMarineLife() ? "Sí" : "No"));
-                System.out.println("Calificación: " + divespot.getRating() + " estrellas");
+                System.out.println(divespot.toString());
                 System.out.println("------------------------------------------");
             }
         }
     }
 
-    // Buscar un Divespot por nombre
+    // Find divespot by name
     public Divespot findDivespotByName(String name) {
         for (Divespot divespot : divespots) {
             if (divespot.getName().equals(name)) {
