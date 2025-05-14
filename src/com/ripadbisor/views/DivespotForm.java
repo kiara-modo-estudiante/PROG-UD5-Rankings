@@ -95,10 +95,7 @@ public class DivespotForm extends JPanel {
                     Divespot divespot = new Divespot(name, location, maxDepth, season, hasMarineLife, rating);
                     divespotList.addDivespot(divespot);
 
-                    String info = String.format(
-                            "Name: %s\nLocation: %s\nMax. depth: %d\nRecommended season: %s\nIs there marine life?: %s\nRating: %d\n",
-                            name, location, maxDepth, season, hasMarineLife ? "Yes" : "No", rating);
-                    mainFrame.displayDivespotInfo(info);
+                    mainFrame.displayDivespotInfo(divespot.toString());
 
                     nameField.setText("");
                     locationField.setText("");
