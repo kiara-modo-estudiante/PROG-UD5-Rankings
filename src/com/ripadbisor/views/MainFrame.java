@@ -17,11 +17,12 @@ package com.ripadbisor.views;
 import javax.swing.*;
 import java.awt.*;
 import com.ripadbisor.models.DivespotList;
+import com.ripadbisor.views.forms.DivespotForm;
 
 public class MainFrame extends JFrame {
-    private DivespotForm divespotForm;
     private JTextArea displayArea;
     private DivespotList divespotList;
+    private JPanel currentPanel;
 
     public MainFrame() {
         // Initialize the DivespotList model
@@ -30,17 +31,59 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Initialize components
         divespotList = new DivespotList();
-        divespotForm = new DivespotForm(this, divespotList);
-        displayArea = new JTextArea();
-        displayArea.setEditable(false);
 
-        // Set up the display area with a border
-        add(divespotForm, BorderLayout.NORTH);
-        add(new JScrollPane(displayArea), BorderLayout.CENTER);
+        showMainMenu();
+    }
 
-        setVisible(true);
+    public void showMainMenu() {
+        if (currentPanel != null) {
+            remove(currentPanel);
+        }
+        currentPanel = new MainMenu(this);
+        add(currentPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    public void showAddDivespotForm() {
+        if (currentPanel != null) {
+            remove(currentPanel);
+        }
+        currentPanel = new DivespotForm(this, divespotList);
+        add(currentPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    public void showEditDivespotForm() {
+        if (currentPanel != null) {
+            remove(currentPanel);
+        }
+        // currentPanel = new EditDivespotForm(this, divespotList);
+        add(currentPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    public void showAllDivespots() {
+        if (currentPanel != null) {
+            remove(currentPanel);
+        }
+        // currentPanel = new ShowDivespotsPanel(this, divespotList);
+        add(currentPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    public void showDeleteDivespotForm() {
+        if (currentPanel != null) {
+            remove(currentPanel);
+        }
+        // currentPanel = new DeleteDivespotForm(this, divespotList);
+        add(currentPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
     }
 
     /**

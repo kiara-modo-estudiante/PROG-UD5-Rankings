@@ -10,7 +10,7 @@
  * The form includes a submit button that, when clicked, validates the input fields,
  * creates a new Divespot object, adds it to the DivespotList, and clears the form fields.
  */
-package com.ripadbisor.views;
+package com.ripadbisor.views.forms;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import com.ripadbisor.models.Divespot;
 import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.utils.InputValidator;
+import com.ripadbisor.views.MainFrame;
 
 public class DivespotForm extends JPanel {
     // Form fields
