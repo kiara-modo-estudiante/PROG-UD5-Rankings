@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import com.ripadbisor.models.Divespot;
 import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.views.MainFrame;
+import com.ripadbisor.views.components.DivespotPanel;
 
 public class DeleteDivespotForm extends JPanel {
     private MainFrame mainFrame;
@@ -69,17 +70,7 @@ public class DeleteDivespotForm extends JPanel {
         divespotListPanel.removeAll(); // Clear the panel before repopulating
 
         for (Divespot divespot : divespotList.getDivespots()) {
-            JPanel divespotPanel = new JPanel(new BorderLayout());
-            divespotPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-            divespotPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
-
-            // Display divespot information
-            JLabel divespotLabel = new JLabel(divespot.toString());
-            divespotLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-            divespotPanel.add(divespotLabel, BorderLayout.CENTER);
-
-            // Add delete button
-            JButton deleteButton = new JButton("X");
+            JButton deleteButton = new JButton("❌");
             deleteButton.setForeground(Color.RED);
             deleteButton.addActionListener(new ActionListener() {
                 @Override
@@ -98,12 +89,14 @@ public class DeleteDivespotForm extends JPanel {
                     }
                 }
             });
-            divespotPanel.add(deleteButton, BorderLayout.EAST);
 
+            // Use DivespotPanel to display the divespot
+            DivespotPanel divespotPanel = new DivespotPanel(divespot, deleteButton);
             divespotListPanel.add(divespotPanel);
         }
 
         divespotListPanel.revalidate();
         divespotListPanel.repaint();
     }
+
 }
