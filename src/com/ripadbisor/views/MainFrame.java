@@ -19,6 +19,7 @@ import java.awt.*;
 import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.views.forms.DeleteDivespotForm;
 import com.ripadbisor.views.forms.DivespotForm;
+import com.ripadbisor.views.forms.EditDivespotForm;
 
 public class MainFrame extends JFrame {
     private JTextArea displayArea;
@@ -66,7 +67,7 @@ public class MainFrame extends JFrame {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        // currentPanel = new EditDivespotForm(this, divespotList);
+        currentPanel = new EditDivespotForm(this, divespotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
