@@ -75,4 +75,11 @@ public class Divespot {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Name: %s\nLocation: %s\nMax. depth: %d meters\nRecommended season: %s\nMarine life: %s\nRating: %d stars\n",
+                name, location, maxDepth, recommendedSeason, hasMarineLife ? "Yes" : "No", rating);
+    }
 }

@@ -1,5 +1,6 @@
 # Compiled class files
 *.class
+/bin/
 
 # Log file
 *.log
@@ -51,3 +52,4 @@ nbdist/
 
 # VS Code
 .vscode/
+
