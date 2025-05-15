@@ -10,7 +10,7 @@
  * The form includes a submit button that, when clicked, validates the input fields,
  * creates a new Divespot object, adds it to the DivespotList, and clears the form fields.
  */
-package com.ripadbisor.views;
+package com.ripadbisor.views.forms;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import com.ripadbisor.models.Divespot;
 import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.utils.InputValidator;
+import com.ripadbisor.views.MainFrame;
 
 public class DivespotForm extends JPanel {
     // Form fields
@@ -30,6 +31,7 @@ public class DivespotForm extends JPanel {
     private JCheckBox marineLifeCheckBox;
     private JTextField ratingField;
     private JButton submitButton;
+    private JLabel successMessageLabel;
 
     // References to the main frame and divespot list
     // These references are used to interact with the main application window and
@@ -44,40 +46,65 @@ public class DivespotForm extends JPanel {
         this.mainFrame = mainFrame;
         this.divespotList = divespotList;
 
-        setLayout(new GridLayout(7, 2));
+        setLayout(new BorderLayout());
 
-        add(new JLabel("Name:"));
+        // Top panel with back button
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JButton backButton = new JButton("← Menu");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.showMainMenu(); // Return to the main menu
+            }
+        });
+        topPanel.add(backButton);
+        add(topPanel, BorderLayout.NORTH);
+
+        // Center panel with form fields
+        JPanel formPanel = new JPanel(new GridLayout(7, 2, 5, 5));
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        formPanel.add(new JLabel("Name:"));
         nameField = new JTextField();
-        add(nameField);
+        formPanel.add(nameField);
 
-        add(new JLabel("Location:"));
+        formPanel.add(new JLabel("Location:"));
         locationField = new JTextField();
-        add(locationField);
+        formPanel.add(locationField);
 
-        add(new JLabel("Max. depth:"));
+        formPanel.add(new JLabel("Max. depth:"));
         maxDepthField = new JTextField();
-        add(maxDepthField);
+        formPanel.add(maxDepthField);
 
-        add(new JLabel("Recommended season:"));
+        formPanel.add(new JLabel("Recommended season:"));
         seasonField = new JTextField();
-        add(seasonField);
+        formPanel.add(seasonField);
 
-        add(new JLabel("Is there marine life?"));
+        formPanel.add(new JLabel("Is there marine life?"));
         marineLifeCheckBox = new JCheckBox();
-        add(marineLifeCheckBox);
+        formPanel.add(marineLifeCheckBox);
 
-        add(new JLabel("Rating:"));
+        formPanel.add(new JLabel("Rating:"));
         ratingField = new JTextField();
-        add(ratingField);
+        formPanel.add(ratingField);
 
         // Submit button to add the divespot
         // This button triggers the action to validate input and create a new divespot.
         submitButton = new JButton("Add Divespot");
-        add(submitButton);
+        formPanel.add(submitButton);
 
-        // Action listener for the submit button
-        // This listener handles the button click event, validates the input fields,
-        // creates a new Divespot object, and adds it to the divespot list.
+        // Empty space for alignment
+        formPanel.add(new JLabel(""));
+
+        add(formPanel, BorderLayout.CENTER);
+
+        // Bottom panel with success message
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        successMessageLabel = new JLabel(""); // Initially empty
+        successMessageLabel.setForeground(new Color(0, 128, 0)); // Green color for success
+        bottomPanel.add(successMessageLabel);
+        add(bottomPanel, BorderLayout.SOUTH);
+
         // It also displays the divespot information in the main frame and clears the
         // form fields.
         submitButton.addActionListener(new ActionListener() {
@@ -96,6 +123,11 @@ public class DivespotForm extends JPanel {
                     divespotList.addDivespot(divespot);
 
                     mainFrame.displayDivespotInfo(divespot.toString());
+
+                    // Show success message
+                    successMessageLabel.setText("You added a new divespot named: " + name);
+                    successMessageLabel.revalidate();
+                    successMessageLabel.repaint();
 
                     nameField.setText("");
                     locationField.setText("");
