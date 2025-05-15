@@ -22,6 +22,11 @@ public class DivespotList {
         divespots = new ArrayList<>();
     }
 
+    // Add a getter for the list of divespots
+    public List<Divespot> getDivespots() {
+        return divespots;
+    }
+
     // Add a new Divespot to the list
     public void addDivespot(Divespot divespot) {
         divespots.add(divespot);
