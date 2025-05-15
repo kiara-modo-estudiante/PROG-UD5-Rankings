@@ -105,8 +105,7 @@ public class DivespotForm extends JPanel {
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // It also displays the divespot information in the main frame and clears the
-        // form fields.
+        // Modify the submit button action listener to validate the rating range
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -118,6 +117,9 @@ public class DivespotForm extends JPanel {
                             mainFrame);
                     boolean hasMarineLife = marineLifeCheckBox.isSelected();
                     int rating = InputValidator.parseInt(ratingField.getText(), mainFrame);
+
+                    // Validate that the rating is between 1 and 5
+                    rating = InputValidator.validateRating(rating, mainFrame);
 
                     Divespot divespot = new Divespot(name, location, maxDepth, season, hasMarineLife, rating);
                     divespotList.addDivespot(divespot);
@@ -136,7 +138,7 @@ public class DivespotForm extends JPanel {
                     marineLifeCheckBox.setSelected(false);
                     ratingField.setText("");
                 } catch (IllegalArgumentException ex) {
-                    // Completed on InputValidator
+                    JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
