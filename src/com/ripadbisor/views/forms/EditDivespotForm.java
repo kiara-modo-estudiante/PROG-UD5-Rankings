@@ -1,3 +1,21 @@
+/**
+ * The EditDivespotForm class represents a Swing-based user interface panel
+ * for editing and managing a list of divespots. It provides functionality
+ * to display a list of divespots, edit their details, and update the list
+ * dynamically. This form is part of a larger application and interacts with
+ * the MainFrame and DivespotList classes.
+ *
+ * <p>Key Features:
+ * - Displays a list of divespots with an option to edit each one.
+ * - Provides a dialog-based form for editing divespot details.
+ * - Updates the list dynamically after edits.
+ * - Includes a success message display for user feedback.
+ *
+ * <p>Purpose:
+ * This class is designed to allow users to manage and edit divespot information
+ * in a user-friendly graphical interface, enhancing the overall usability of
+ * the application.
+ */
 package com.ripadbisor.views.forms;
 
 import javax.swing.*;
@@ -50,6 +68,11 @@ public class EditDivespotForm extends JPanel {
         refreshDivespotList();
     }
 
+    /**
+     * Refreshes the list of divespots displayed in the panel.
+     * This method clears the existing divespot list and repopulates it
+     * with the current divespots from the DivespotList model.
+     */
     private void refreshDivespotList() {
         divespotListPanel.removeAll(); // Clear the panel before repopulating
 
@@ -80,6 +103,13 @@ public class EditDivespotForm extends JPanel {
         divespotListPanel.repaint();
     }
 
+    /**
+     * Displays a dialog for editing the details of a selected divespot.
+     * This method creates a new dialog with form fields pre-filled with
+     * the current divespot information, allowing the user to edit and save changes.
+     *
+     * @param divespot The divespot to be edited.
+     */
     private void showEditForm(Divespot divespot) {
         // Create a dialog for editing the divespot
         JDialog editDialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this), "Edit Divespot", true);
