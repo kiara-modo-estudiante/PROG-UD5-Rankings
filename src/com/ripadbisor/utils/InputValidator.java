@@ -43,4 +43,22 @@ public class InputValidator {
         }
         return input.trim();
     }
+
+    /**
+     * Validates that a divespot's rating is between 1 and 5, showing an error
+     * message if it is not.
+     *
+     * @param rating      the rating to validate
+     * @param parentFrame the parent frame for the error dialog
+     * @return the validated rating
+     * @throws IllegalArgumentException if the rating is not between 1 and 5
+     */
+    public static int validateRating(int rating, JFrame parentFrame) {
+        if (rating < 1 || rating > 5) {
+            JOptionPane.showMessageDialog(parentFrame, "The rating must be between 1 and 5.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException("The rating must be between 1 and 5.");
+        }
+        return rating;
+    }
 }
