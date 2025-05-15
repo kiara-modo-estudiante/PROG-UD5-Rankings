@@ -17,9 +17,17 @@ import java.util.List;
 
 public class DivespotList {
     private List<Divespot> divespots;
+    {
+        divespots = new ArrayList<>();
+        divespots.add(new Divespot("Blue Hole", "Belize", 124, "Winter", true, 5));
+        divespots.add(new Divespot("Great Barrier Reef", "Australia", 40, "Spring", true, 5));
+        divespots.add(new Divespot("Silfra Fissure", "Iceland", 18, "Summer", false, 4));
+        divespots.add(new Divespot("Richelieu Rock", "Thailand", 35, "Autumn", true, 5));
+        divespots.add(new Divespot("USS Liberty", "Bali", 30, "Winter", true, 4));
+    }
 
     public DivespotList() {
-        divespots = new ArrayList<>();
+        // divespots = new ArrayList<>();
     }
 
     // Add a getter for the list of divespots
