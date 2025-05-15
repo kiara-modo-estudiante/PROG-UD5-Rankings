@@ -11,10 +11,10 @@ public class MainMenu extends JPanel {
     public MainMenu(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
 
-        setLayout(new GridLayout(5, 1, 10, 10)); // 5 botones con espacio entre ellos
+        setLayout(new GridLayout(5, 1, 10, 10));
 
-        // Botón para añadir un elemento
-        JButton addButton = new JButton("Añadir Divespot");
+        // Button to add a new divespot
+        JButton addButton = new JButton("🤿 Add new Divespot");
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -23,8 +23,8 @@ public class MainMenu extends JPanel {
         });
         add(addButton);
 
-        // Botón para editar un elemento
-        JButton editButton = new JButton("Editar Divespot");
+        // Button to edit an existing divespot
+        JButton editButton = new JButton("📝 Edit existing Divespot");
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,8 +33,8 @@ public class MainMenu extends JPanel {
         });
         add(editButton);
 
-        // Botón para mostrar todos los elementos
-        JButton showButton = new JButton("Mostrar Divespots");
+        // Show all divespots
+        JButton showButton = new JButton("🔍 Show all Divespots");
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,8 +43,8 @@ public class MainMenu extends JPanel {
         });
         add(showButton);
 
-        // Botón para eliminar un elemento
-        JButton deleteButton = new JButton("Eliminar Divespot");
+        // Button to delete a divespot
+        JButton deleteButton = new JButton("❌ Delete Divespot");
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,12 +53,12 @@ public class MainMenu extends JPanel {
         });
         add(deleteButton);
 
-        // Botón para salir del programa
-        JButton exitButton = new JButton("Salir");
+        // Button to exit
+        JButton exitButton = new JButton("👋 Exit");
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0); // Termina la ejecución del programa
+                System.exit(0);
             }
         });
         add(exitButton);
