@@ -1,6 +1,9 @@
-package com.ripadbisor.views;
+package com.ripadbisor.views.panels;
 
 import javax.swing.*;
+
+import com.ripadbisor.views.MainFrame;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -12,7 +12,7 @@
  * - A top panel containing a back button for navigation.
  * - A center panel with a scrollable list of diveSpots, sorted by rating.
  */
-package com.ripadbisor.views;
+package com.ripadbisor.views.panels;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
+import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
 import com.ripadbisor.views.components.DiveSpotPanel;
 

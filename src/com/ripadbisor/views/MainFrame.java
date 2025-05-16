@@ -20,6 +20,8 @@ import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.views.forms.DeleteDiveSpotForm;
 import com.ripadbisor.views.forms.AddDiveSpotForm;
 import com.ripadbisor.views.forms.EditDiveSpotForm;
+import com.ripadbisor.views.panels.MainMenu;
+import com.ripadbisor.views.panels.ShowDiveSpotsPanel;
 
 public class MainFrame extends JFrame {
     private JTextArea displayArea;
