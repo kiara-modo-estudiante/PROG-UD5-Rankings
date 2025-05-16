@@ -20,23 +20,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
+import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
 import com.ripadbisor.views.components.DiveSpotPanel;
 
 public class ShowDiveSpotsPanel extends JPanel {
+    private JPanel diveSpotListPanel;
+
     public ShowDiveSpotsPanel(MainFrame mainFrame, DiveSpotList diveSpotList) {
         setLayout(new BorderLayout());
 
-        // Top panel with back button
+        // Top panel with back button.
         add(new BackButtonPanel(e -> mainFrame.showMainMenu()), BorderLayout.NORTH);
 
         // Center panel to display the list of diveSpots
-        JPanel diveSpotListPanel = new JPanel();
-        diveSpotListPanel.setLayout(new BoxLayout(diveSpotListPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(diveSpotListPanel);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        add(scrollPane, BorderLayout.CENTER);
+        diveSpotListPanel = new JPanel();
+        add(UIUtils.createScrollablePanel(diveSpotListPanel), BorderLayout.CENTER);
 
         // Sort diveSpots by rating (descending order)
         List<DiveSpot> sortedDiveSpots = diveSpotList.getDiveSpots().stream()

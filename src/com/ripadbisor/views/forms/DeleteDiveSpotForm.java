@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
+import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
 import com.ripadbisor.views.components.DiveSpotPanel;
@@ -42,15 +43,12 @@ public class DeleteDiveSpotForm extends JPanel {
 
         // Center panel to display the list of diveSpots
         diveSpotListPanel = new JPanel();
-        diveSpotListPanel.setLayout(new BoxLayout(diveSpotListPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(diveSpotListPanel);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        add(scrollPane, BorderLayout.CENTER);
+        add(UIUtils.createScrollablePanel(diveSpotListPanel), BorderLayout.CENTER);
 
         // Bottom panel with success message
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        successMessageLabel = new JLabel(""); // Initially empty
-        successMessageLabel.setForeground(new Color(0, 128, 0)); // Green color for success
+        // Initially empty
+        successMessageLabel = UIUtils.createMessageLabel(new Color(0, 128, 0));
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 
@@ -75,6 +73,7 @@ public class DeleteDiveSpotForm extends JPanel {
                         refreshDiveSpotList();
                     } else {
                         successMessageLabel.setText("Failed to delete: " + diveSpot.getName());
+                        successMessageLabel = new JLabel("");
                         successMessageLabel.setForeground(Color.RED);
                         successMessageLabel.revalidate();
                         successMessageLabel.repaint();
