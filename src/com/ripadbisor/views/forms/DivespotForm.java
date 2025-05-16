@@ -138,7 +138,7 @@ public class DivespotForm extends JPanel {
                     marineLifeCheckBox.setSelected(false);
                     ratingField.setText("");
                 } catch (IllegalArgumentException ex) {
-                    JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+                    // Logic on Input Validator class
                 }
             }
         });
