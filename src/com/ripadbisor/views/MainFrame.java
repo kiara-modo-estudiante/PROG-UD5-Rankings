@@ -18,7 +18,7 @@ import javax.swing.*;
 import java.awt.*;
 import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.views.forms.DeleteDivespotForm;
-import com.ripadbisor.views.forms.DivespotForm;
+import com.ripadbisor.views.forms.AddDivespotForm;
 import com.ripadbisor.views.forms.EditDivespotForm;
 
 public class MainFrame extends JFrame {
@@ -57,7 +57,7 @@ public class MainFrame extends JFrame {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        currentPanel = new DivespotForm(this, divespotList);
+        currentPanel = new AddDivespotForm(this, divespotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();

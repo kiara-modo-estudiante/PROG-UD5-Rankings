@@ -21,7 +21,7 @@ import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.views.MainFrame;
 
-public class DivespotForm extends JPanel {
+public class AddDivespotForm extends JPanel {
     // Form fields
     // These fields are used to collect user input for the divespot details.
     private JTextField nameField;
@@ -39,7 +39,7 @@ public class DivespotForm extends JPanel {
     private MainFrame mainFrame;
     private DivespotList divespotList;
 
-    public DivespotForm(MainFrame mainFrame, DivespotList divespotList) {
+    public AddDivespotForm(MainFrame mainFrame, DivespotList divespotList) {
         // Constructor initializes the form and its components
         // It sets the layout, creates the input fields, and adds action listeners
         // to handle form submission.
