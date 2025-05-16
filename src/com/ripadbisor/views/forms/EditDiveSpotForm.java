@@ -51,8 +51,7 @@ public class EditDiveSpotForm extends JPanel {
 
         // Bottom panel with success message
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        successMessageLabel = new JLabel(""); // Initially empty
-        successMessageLabel.setForeground(new Color(0, 128, 0)); // Green color for success
+        successMessageLabel = UIUtils.createMessageLabel(new Color(0, 128, 0));
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 

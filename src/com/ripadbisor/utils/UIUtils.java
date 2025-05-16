@@ -10,6 +10,10 @@ package com.ripadbisor.utils;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+
+import java.awt.Color;
+
 import javax.swing.BorderFactory;
 
 public class UIUtils {
@@ -24,5 +28,18 @@ public class UIUtils {
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         return scrollPane;
+    }
+
+    /**
+     * Creates a JLabel with the specified text and color.
+     *
+     * @param text  The text to be displayed on the label.
+     * @param color The color of the label's text.
+     * @return A JLabel with the specified text and color.
+     */
+    public static JLabel createMessageLabel(Color color) {
+        JLabel label = new JLabel("");
+        label.setForeground(color);
+        return label;
     }
 }

@@ -47,8 +47,8 @@ public class DeleteDiveSpotForm extends JPanel {
 
         // Bottom panel with success message
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        successMessageLabel = new JLabel(""); // Initially empty
-        successMessageLabel.setForeground(new Color(0, 128, 0)); // Green color for success
+        // Initially empty
+        successMessageLabel = UIUtils.createMessageLabel(new Color(0, 128, 0));
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 
@@ -73,6 +73,7 @@ public class DeleteDiveSpotForm extends JPanel {
                         refreshDiveSpotList();
                     } else {
                         successMessageLabel.setText("Failed to delete: " + diveSpot.getName());
+                        successMessageLabel = new JLabel("");
                         successMessageLabel.setForeground(Color.RED);
                         successMessageLabel.revalidate();
                         successMessageLabel.repaint();
