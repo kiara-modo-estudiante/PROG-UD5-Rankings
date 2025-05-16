@@ -1,7 +1,7 @@
 /**
- * The DivespotList class represents a list of diving spots (Divespots).
+ * The DiveSpotList class represents a list of diving spots (DiveSpots).
  * Its main purpose is to provide a structure to manage a collection
- * of Divespot objects, allowing adding, removing, searching, and displaying
+ * of DiveSpot objects, allowing adding, removing, searching, and displaying
  * information about the registered diving spots.
  * 
  * Purpose:
@@ -15,51 +15,59 @@ package com.ripadbisor.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DivespotList {
-    private List<Divespot> divespots;
-
-    public DivespotList() {
-        divespots = new ArrayList<>();
+public class DiveSpotList {
+    private List<DiveSpot> diveSpots;
+    {
+        diveSpots = new ArrayList<>();
+        diveSpots.add(new DiveSpot("Blue Hole", "Belize", 124, "Winter", true, 5));
+        diveSpots.add(new DiveSpot("Great Barrier Reef", "Australia", 40, "Spring", true, 5));
+        diveSpots.add(new DiveSpot("Silfra Fissure", "Iceland", 18, "Summer", false, 4));
+        diveSpots.add(new DiveSpot("Richelieu Rock", "Thailand", 35, "Autumn", true, 5));
+        diveSpots.add(new DiveSpot("USS Liberty", "Bali", 30, "Winter", true, 4));
     }
 
-    // Agregar un Divespot a la lista
-    public void addDivespot(Divespot divespot) {
-        divespots.add(divespot);
+    public DiveSpotList() {
+        // diveSpots = new ArrayList<>();
     }
 
-    // Eliminar un Divespot de la lista por nombre
-    public boolean removeDivespot(String name) {
-        for (Divespot divespot : divespots) {
-            if (divespot.getName().equals(name)) {
-                divespots.remove(divespot);
+    // Add a getter for the list of diveSpots
+    public List<DiveSpot> getDiveSpots() {
+        return diveSpots;
+    }
+
+    // Add a new DiveSpot to the list
+    public void addDiveSpot(DiveSpot diveSpot) {
+        diveSpots.add(diveSpot);
+    }
+
+    // Delete a DiveSpot from the list by name
+    public boolean removeDiveSpot(String name) {
+        for (DiveSpot diveSpot : diveSpots) {
+            if (diveSpot.getName().equals(name)) {
+                diveSpots.remove(diveSpot);
                 return true;
             }
         }
         return false;
     }
 
-    // Mostrar todos los Divespots en la lista
-    public void showAllDivespots() {
-        if (divespots.isEmpty()) {
-            System.out.println("No hay lugares de buceo registrados.");
+    // Show all diveSpots in the list
+    public void showAllDiveSpots() {
+        if (diveSpots.isEmpty()) {
+            System.out.println("No diveSpots registered.");
         } else {
-            for (Divespot divespot : divespots) {
-                System.out.println("Nombre: " + divespot.getName());
-                System.out.println("Ubicación: " + divespot.getLocation());
-                System.out.println("Profundidad máxima: " + divespot.getMaxDepth() + " metros");
-                System.out.println("Temporada recomendada: " + divespot.getRecommendedSeason());
-                System.out.println("¿Tiene vida marina? " + (divespot.isHasMarineLife() ? "Sí" : "No"));
-                System.out.println("Calificación: " + divespot.getRating() + " estrellas");
+            for (DiveSpot diveSpot : diveSpots) {
+                System.out.println(diveSpot.toString());
                 System.out.println("------------------------------------------");
             }
         }
     }
 
-    // Buscar un Divespot por nombre
-    public Divespot findDivespotByName(String name) {
-        for (Divespot divespot : divespots) {
-            if (divespot.getName().equals(name)) {
-                return divespot;
+    // Find diveSpot by name
+    public DiveSpot findDiveSpotByName(String name) {
+        for (DiveSpot diveSpot : diveSpots) {
+            if (diveSpot.getName().equals(name)) {
+                return diveSpot;
             }
         }
         return null;
