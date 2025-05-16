@@ -1,21 +1,21 @@
 /**
- * The EditDiveSpotForm class represents a Swing-based user interface panel
- * for editing and managing a list of diveSpots. It provides functionality
- * to display a list of diveSpots, edit their details, and update the list
- * dynamically. This form is part of a larger application and interacts with
- * the MainFrame and DiveSpotList classes.
- *
- * <p>Key Features:
- * - Displays a list of diveSpots with an option to edit each one.
- * - Provides a dialog-based form for editing diveSpot details.
- * - Updates the list dynamically after edits.
- * - Includes a success message display for user feedback.
- *
- * <p>Purpose:
- * This class is designed to allow users to manage and edit diveSpot information
- * in a user-friendly graphical interface, enhancing the overall usability of
- * the application.
- */
+* The EditDiveSpotForm class represents a Swing-based user interface panel
+* for editing and managing a list of diveSpots. It provides functionality
+* to display a list of diveSpots, edit their details, and update the list
+* dynamically. This form is part of a larger application and interacts with
+* the MainFrame and DiveSpotList classes.
+*
+* <p>Key Features:
+* - Displays a list of diveSpots with an option to edit each one.
+* - Provides a dialog-based form for editing diveSpot details.
+* - Updates the list dynamically after edits.
+* - Includes a success message display for user feedback.
+*
+* <p>Purpose:
+* This class is designed to allow users to manage and edit diveSpot information
+* in a user-friendly graphical interface, enhancing the overall usability of
+* the application.
+*/
 package com.ripadbisor.views.forms;
 
 import javax.swing.*;
@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
+import com.ripadbisor.utils.FormValidator;
 import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
@@ -131,23 +132,17 @@ public class EditDiveSpotForm extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 try {
                     // Validate inputs using InputValidator
-                    String name = InputValidator.validateNotEmpty(nameField.getText(), "Name", editDialog);
-                    String location = InputValidator.validateNotEmpty(locationField.getText(), "Location", editDialog);
-                    int maxDepth = InputValidator.parseInt(maxDepthField.getText(), editDialog);
-                    String season = InputValidator.validateNotEmpty(seasonField.getText(), "Season", editDialog);
-                    boolean hasMarineLife = marineLifeCheckBox.isSelected();
-                    int rating = InputValidator.parseInt(ratingField.getText(), editDialog);
-
-                    // Validate that the rating is between 1 and 5
-                    rating = InputValidator.validateRating(rating, editDialog);
+                    DiveSpot updatedDiveSpot = FormValidator.validateDiveSpotForm(
+                            nameField, locationField, maxDepthField, seasonField,
+                            marineLifeCheckBox, ratingField, editDialog);
 
                     // Update the diveSpot with validated values
-                    diveSpot.setName(name);
-                    diveSpot.setLocation(location);
-                    diveSpot.setMaxDepth(maxDepth);
-                    diveSpot.setRecommendedSeason(season);
-                    diveSpot.setHasMarineLife(hasMarineLife);
-                    diveSpot.setRating(rating);
+                    diveSpot.setName(updatedDiveSpot.getName());
+                    diveSpot.setLocation(updatedDiveSpot.getLocation());
+                    diveSpot.setMaxDepth(updatedDiveSpot.getMaxDepth());
+                    diveSpot.setRecommendedSeason(updatedDiveSpot.getRecommendedSeason());
+                    diveSpot.setHasMarineLife(updatedDiveSpot.isHasMarineLife());
+                    diveSpot.setRating(updatedDiveSpot.getRating());
 
                     successMessageLabel.setText("Successfully updated: " + diveSpot.getName());
                     successMessageLabel.revalidate();

@@ -1,6 +1,6 @@
 /**
- * Utility class for input validation, providing methods to parse integers and validate non-empty strings.
- */
+* Utility class for input validation, providing methods to parse integers and validate non-empty strings.
+*/
 package com.ripadbisor.utils;
 
 import java.awt.Component;
@@ -63,4 +63,44 @@ public class InputValidator {
         }
         return rating;
     }
+
+    /**
+     * Validates that a diveSpot's depth is between 0 and 100, showing an error
+     * message if it is not.
+     *
+     * @param depth       the depth to validate
+     * @param parentFrame the parent frame for the error dialog
+     * @return the validated depth
+     * @throws IllegalArgumentException if the depth is not between 0 and 100
+     */
+    public static int validateDepth(int depth, Component parentFrame) {
+        if (depth < 0 || depth > 150) {
+            JOptionPane.showMessageDialog(parentFrame, "The depth must be between 0 and 150.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException("The depth must be between 0 and 150.");
+        }
+        return depth;
+    }
+
+    /**
+     * Validates that the recommended season is Winter, Spring, Summer, or Autumn,
+     * showing an error message if it is not.
+     *
+     * @param season      the season to validate
+     * @param parentFrame the parent frame for the error dialog
+     * @return the validated season
+     * @throws IllegalArgumentException if the season is not valid
+     */
+    public static String validateSeason(String season, Component parentFrame) {
+        if (!season.equalsIgnoreCase("Winter") && !season.equalsIgnoreCase("Spring")
+                && !season.equalsIgnoreCase("Summer") && !season.equalsIgnoreCase("Autumn")) {
+            JOptionPane.showMessageDialog(parentFrame,
+                    "The recommended season must be Winter, Spring, Summer or Autumn.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException(
+                    "The recommended season must be Winter, Spring, Summer or Autumn.");
+        }
+        return season;
+    }
+
 }

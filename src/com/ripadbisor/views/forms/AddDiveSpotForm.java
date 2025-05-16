@@ -1,15 +1,15 @@
 /**
- * The DiveSpotForm class represents a Swing-based form for adding new dive spots.
- * It provides a user interface for inputting details such as the name, location,
- * maximum depth, recommended season, presence of marine life, and rating of a dive spot.
- * 
- * This class interacts with the MainFrame to display information and uses the 
- * DiveSpotList to store the created dive spots. Input validation is performed 
- * using the InputValidator utility class to ensure data integrity.
- * 
- * The form includes a submit button that, when clicked, validates the input fields,
- * creates a new DiveSpot object, adds it to the DiveSpotList, and clears the form fields.
- */
+* The DiveSpotForm class represents a Swing-based form for adding new dive spots.
+* It provides a user interface for inputting details such as the name, location,
+* maximum depth, recommended season, presence of marine life, and rating of a dive spot.
+*
+* This class interacts with the MainFrame to display information and uses the
+* DiveSpotList to store the created dive spots. Input validation is performed
+* using the InputValidator utility class to ensure data integrity.
+*
+* The form includes a submit button that, when clicked, validates the input fields,
+* creates a new DiveSpot object, adds it to the DiveSpotList, and clears the form fields.
+*/
 package com.ripadbisor.views.forms;
 
 import javax.swing.*;
@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
+import com.ripadbisor.utils.FormValidator;
 import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
@@ -102,24 +103,15 @@ public class AddDiveSpotForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String name = InputValidator.validateNotEmpty(nameField.getText(), "Name", mainFrame);
-                    String location = InputValidator.validateNotEmpty(locationField.getText(), "Location", mainFrame);
-                    int maxDepth = InputValidator.parseInt(maxDepthField.getText(), mainFrame);
-                    String season = InputValidator.validateNotEmpty(seasonField.getText(), "Recommended season",
-                            mainFrame);
-                    boolean hasMarineLife = marineLifeCheckBox.isSelected();
-                    int rating = InputValidator.parseInt(ratingField.getText(), mainFrame);
+                    DiveSpot diveSpot = FormValidator.validateDiveSpotForm(nameField, locationField, maxDepthField,
+                            seasonField, marineLifeCheckBox, ratingField, mainFrame);
 
-                    // Validate that the rating is between 1 and 5
-                    rating = InputValidator.validateRating(rating, mainFrame);
-
-                    DiveSpot diveSpot = new DiveSpot(name, location, maxDepth, season, hasMarineLife, rating);
                     diveSpotList.addDiveSpot(diveSpot);
 
                     mainFrame.displayDiveSpotInfo(diveSpot.toString());
 
                     // Show success message
-                    successMessageLabel.setText("You added a new diveSpot named: " + name);
+                    successMessageLabel.setText("You added a new diveSpot named: " + diveSpot.getName());
                     successMessageLabel.revalidate();
                     successMessageLabel.repaint();
 
