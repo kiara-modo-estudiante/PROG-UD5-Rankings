@@ -1,3 +1,17 @@
+/**
+ * The ShowDivespotsPanel class is a custom JPanel that displays a list of divespots
+ * in a scrollable panel, sorted by their rating in descending order. It includes a 
+ * back button to navigate back to the main menu.
+ *
+ * Purpose:
+ * - Provides a user interface for viewing divespots in a structured and organized manner.
+ * - Displays divespots using individual DivespotPanel components.
+ * - Allows navigation back to the main menu via a back button.
+ *
+ * Components:
+ * - A top panel containing a back button for navigation.
+ * - A center panel with a scrollable list of divespots, sorted by rating.
+ */
 package com.ripadbisor.views;
 
 import javax.swing.*;
