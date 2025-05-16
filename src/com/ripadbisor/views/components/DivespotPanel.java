@@ -40,6 +40,13 @@ public class DivespotPanel extends JPanel {
         depthLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         leftPanel.add(depthLabel);
 
+        // Recommended season
+        JLabel seasonLabel = new JLabel("Season: " + divespot.getRecommendedSeason());
+        seasonLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        seasonLabel.setForeground(new Color(80, 80, 80));
+        seasonLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(seasonLabel);
+
         // Marine life
         String marineLifeText = divespot.isHasMarineLife() ? "Marine Life: Yes 🐬" : "Marine Life: No 🚤";
         JLabel marineLifeLabel = new JLabel(marineLifeText);
