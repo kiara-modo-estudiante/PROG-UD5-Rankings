@@ -77,7 +77,7 @@ public class MainFrame extends JFrame {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        // currentPanel = new ShowDivespotsPanel(this, divespotList);
+        currentPanel = new ShowDivespotsPanel(this, divespotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
