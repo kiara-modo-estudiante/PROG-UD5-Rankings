@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.ripadbisor.models.Divespot;
 import com.ripadbisor.models.DivespotList;
+import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.DivespotPanel;
 
@@ -140,13 +141,24 @@ public class EditDivespotForm extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Update the divespot with new values
-                    divespot.setName(nameField.getText());
-                    divespot.setLocation(locationField.getText());
-                    divespot.setMaxDepth(Integer.parseInt(maxDepthField.getText()));
-                    divespot.setRecommendedSeason(seasonField.getText());
-                    divespot.setHasMarineLife(marineLifeCheckBox.isSelected());
-                    divespot.setRating(Integer.parseInt(ratingField.getText()));
+                    // Validate inputs using InputValidator
+                    String name = InputValidator.validateNotEmpty(nameField.getText(), "Name", editDialog);
+                    String location = InputValidator.validateNotEmpty(locationField.getText(), "Location", editDialog);
+                    int maxDepth = InputValidator.parseInt(maxDepthField.getText(), editDialog);
+                    String season = InputValidator.validateNotEmpty(seasonField.getText(), "Season", editDialog);
+                    boolean hasMarineLife = marineLifeCheckBox.isSelected();
+                    int rating = InputValidator.parseInt(ratingField.getText(), editDialog);
+
+                    // Validate that the rating is between 1 and 5
+                    rating = InputValidator.validateRating(rating, editDialog);
+
+                    // Update the divespot with validated values
+                    divespot.setName(name);
+                    divespot.setLocation(location);
+                    divespot.setMaxDepth(maxDepth);
+                    divespot.setRecommendedSeason(season);
+                    divespot.setHasMarineLife(hasMarineLife);
+                    divespot.setRating(rating);
 
                     successMessageLabel.setText("Successfully updated: " + divespot.getName());
                     successMessageLabel.revalidate();
@@ -154,9 +166,8 @@ public class EditDivespotForm extends JPanel {
 
                     refreshDivespotList(); // Refresh the list after editing
                     editDialog.dispose(); // Close the dialog
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(editDialog, "Invalid input: " + ex.getMessage(), "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                } catch (IllegalArgumentException ex) {
+                    // Logic on Input Validator class
                 }
             }
         });
