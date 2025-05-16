@@ -1,17 +1,17 @@
 /**
- * The DeleteDivespotForm class represents a JPanel that provides a user interface
- * for deleting divespots from a list. It displays a list of divespots with delete
- * buttons for each item, allowing users to remove divespots from the list. The class
+ * The DeleteDiveSpotForm class represents a JPanel that provides a user interface
+ * for deleting diveSpots from a list. It displays a list of diveSpots with delete
+ * buttons for each item, allowing users to remove diveSpots from the list. The class
  * also includes a success message label to provide feedback on the deletion operation.
  * 
  * Key Features:
- * - Displays a scrollable list of divespots with delete buttons.
- * - Allows users to delete a divespot by clicking the corresponding delete button.
+ * - Displays a scrollable list of diveSpots with delete buttons.
+ * - Allows users to delete a diveSpot by clicking the corresponding delete button.
  * - Shows a success or failure message after a deletion attempt.
  * - Includes a back button to navigate back to the main menu.
  * 
- * This class interacts with the MainFrame for navigation and the DivespotList model
- * to manage the list of divespots.
+ * This class interacts with the MainFrame for navigation and the DiveSpotList model
+ * to manage the list of diveSpots.
  */
 package com.ripadbisor.views.forms;
 
@@ -19,38 +19,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.ripadbisor.models.Divespot;
-import com.ripadbisor.models.DivespotList;
+import com.ripadbisor.models.DiveSpot;
+import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.views.MainFrame;
+import com.ripadbisor.views.components.BackButtonPanel;
+import com.ripadbisor.views.components.DiveSpotPanel;
 
-public class DeleteDivespotForm extends JPanel {
+public class DeleteDiveSpotForm extends JPanel {
     private MainFrame mainFrame;
-    private DivespotList divespotList;
+    private DiveSpotList diveSpotList;
     private JLabel successMessageLabel;
-    private JPanel divespotListPanel;
+    private JPanel diveSpotListPanel;
 
-    public DeleteDivespotForm(MainFrame mainFrame, DivespotList divespotList) {
+    public DeleteDiveSpotForm(MainFrame mainFrame, DiveSpotList diveSpotList) {
         this.mainFrame = mainFrame;
-        this.divespotList = divespotList;
+        this.diveSpotList = diveSpotList;
 
         setLayout(new BorderLayout());
 
         // Top panel with back button
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JButton backButton = new JButton("← Menu");
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.showMainMenu(); // Return to the main menu
-            }
-        });
-        topPanel.add(backButton);
-        add(topPanel, BorderLayout.NORTH);
+        add(new BackButtonPanel(e -> mainFrame.showMainMenu()), BorderLayout.NORTH);
 
-        // Center panel to display the list of divespots
-        divespotListPanel = new JPanel();
-        divespotListPanel.setLayout(new BoxLayout(divespotListPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(divespotListPanel);
+        // Center panel to display the list of diveSpots
+        diveSpotListPanel = new JPanel();
+        diveSpotListPanel.setLayout(new BoxLayout(diveSpotListPanel, BoxLayout.Y_AXIS));
+        JScrollPane scrollPane = new JScrollPane(diveSpotListPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(scrollPane, BorderLayout.CENTER);
 
@@ -61,49 +54,41 @@ public class DeleteDivespotForm extends JPanel {
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // Populate the list of divespots
-        refreshDivespotList();
+        // Populate the list of diveSpots
+        refreshDiveSpotList();
     }
 
-    private void refreshDivespotList() {
-        divespotListPanel.removeAll(); // Clear the panel before repopulating
+    private void refreshDiveSpotList() {
+        diveSpotListPanel.removeAll(); // Clear the panel before repopulating
 
-        for (Divespot divespot : divespotList.getDivespots()) {
-            JPanel divespotPanel = new JPanel(new BorderLayout());
-            divespotPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-            divespotPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
-
-            // Display divespot information
-            JLabel divespotLabel = new JLabel(divespot.toString());
-            divespotLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-            divespotPanel.add(divespotLabel, BorderLayout.CENTER);
-
-            // Add delete button
-            JButton deleteButton = new JButton("X");
+        for (DiveSpot diveSpot : diveSpotList.getDiveSpots()) {
+            JButton deleteButton = new JButton("❌");
             deleteButton.setForeground(Color.RED);
             deleteButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    boolean removed = divespotList.removeDivespot(divespot.getName());
+                    boolean removed = diveSpotList.removeDiveSpot(diveSpot.getName());
                     if (removed) {
-                        successMessageLabel.setText("Successfully deleted: " + divespot.getName());
+                        successMessageLabel.setText("Successfully deleted: " + diveSpot.getName());
                         successMessageLabel.revalidate();
                         successMessageLabel.repaint();
-                        refreshDivespotList();
+                        refreshDiveSpotList();
                     } else {
-                        successMessageLabel.setText("Failed to delete: " + divespot.getName());
+                        successMessageLabel.setText("Failed to delete: " + diveSpot.getName());
                         successMessageLabel.setForeground(Color.RED);
                         successMessageLabel.revalidate();
                         successMessageLabel.repaint();
                     }
                 }
             });
-            divespotPanel.add(deleteButton, BorderLayout.EAST);
 
-            divespotListPanel.add(divespotPanel);
+            // Use DiveSpotPanel to display the diveSpot
+            DiveSpotPanel diveSpotPanel = new DiveSpotPanel(diveSpot, deleteButton);
+            diveSpotListPanel.add(diveSpotPanel);
         }
 
-        divespotListPanel.revalidate();
-        divespotListPanel.repaint();
+        diveSpotListPanel.revalidate();
+        diveSpotListPanel.repaint();
     }
+
 }

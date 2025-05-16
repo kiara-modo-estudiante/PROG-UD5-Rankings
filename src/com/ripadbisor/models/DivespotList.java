@@ -1,7 +1,7 @@
 /**
- * The DivespotList class represents a list of diving spots (Divespots).
+ * The DiveSpotList class represents a list of diving spots (DiveSpots).
  * Its main purpose is to provide a structure to manage a collection
- * of Divespot objects, allowing adding, removing, searching, and displaying
+ * of DiveSpot objects, allowing adding, removing, searching, and displaying
  * information about the registered diving spots.
  * 
  * Purpose:
@@ -15,59 +15,59 @@ package com.ripadbisor.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DivespotList {
-    private List<Divespot> divespots;
+public class DiveSpotList {
+    private List<DiveSpot> diveSpots;
     {
-        divespots = new ArrayList<>();
-        divespots.add(new Divespot("Blue Hole", "Belize", 124, "Winter", true, 5));
-        divespots.add(new Divespot("Great Barrier Reef", "Australia", 40, "Spring", true, 5));
-        divespots.add(new Divespot("Silfra Fissure", "Iceland", 18, "Summer", false, 4));
-        divespots.add(new Divespot("Richelieu Rock", "Thailand", 35, "Autumn", true, 5));
-        divespots.add(new Divespot("USS Liberty", "Bali", 30, "Winter", true, 4));
+        diveSpots = new ArrayList<>();
+        diveSpots.add(new DiveSpot("Blue Hole", "Belize", 124, "Winter", true, 5));
+        diveSpots.add(new DiveSpot("Great Barrier Reef", "Australia", 40, "Spring", true, 5));
+        diveSpots.add(new DiveSpot("Silfra Fissure", "Iceland", 18, "Summer", false, 4));
+        diveSpots.add(new DiveSpot("Richelieu Rock", "Thailand", 35, "Autumn", true, 5));
+        diveSpots.add(new DiveSpot("USS Liberty", "Bali", 30, "Winter", true, 4));
     }
 
-    public DivespotList() {
-        // divespots = new ArrayList<>();
+    public DiveSpotList() {
+        // diveSpots = new ArrayList<>();
     }
 
-    // Add a getter for the list of divespots
-    public List<Divespot> getDivespots() {
-        return divespots;
+    // Add a getter for the list of diveSpots
+    public List<DiveSpot> getDiveSpots() {
+        return diveSpots;
     }
 
-    // Add a new Divespot to the list
-    public void addDivespot(Divespot divespot) {
-        divespots.add(divespot);
+    // Add a new DiveSpot to the list
+    public void addDiveSpot(DiveSpot diveSpot) {
+        diveSpots.add(diveSpot);
     }
 
-    // Delete a Divespot from the list by name
-    public boolean removeDivespot(String name) {
-        for (Divespot divespot : divespots) {
-            if (divespot.getName().equals(name)) {
-                divespots.remove(divespot);
+    // Delete a DiveSpot from the list by name
+    public boolean removeDiveSpot(String name) {
+        for (DiveSpot diveSpot : diveSpots) {
+            if (diveSpot.getName().equals(name)) {
+                diveSpots.remove(diveSpot);
                 return true;
             }
         }
         return false;
     }
 
-    // Show all divespots in the list
-    public void showAllDivespots() {
-        if (divespots.isEmpty()) {
-            System.out.println("No divespots registered.");
+    // Show all diveSpots in the list
+    public void showAllDiveSpots() {
+        if (diveSpots.isEmpty()) {
+            System.out.println("No diveSpots registered.");
         } else {
-            for (Divespot divespot : divespots) {
-                System.out.println(divespot.toString());
+            for (DiveSpot diveSpot : diveSpots) {
+                System.out.println(diveSpot.toString());
                 System.out.println("------------------------------------------");
             }
         }
     }
 
-    // Find divespot by name
-    public Divespot findDivespotByName(String name) {
-        for (Divespot divespot : divespots) {
-            if (divespot.getName().equals(name)) {
-                return divespot;
+    // Find diveSpot by name
+    public DiveSpot findDiveSpotByName(String name) {
+        for (DiveSpot diveSpot : diveSpots) {
+            if (diveSpot.getName().equals(name)) {
+                return diveSpot;
             }
         }
         return null;
