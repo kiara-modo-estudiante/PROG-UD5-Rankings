@@ -28,7 +28,7 @@ public class ShowDiveSpotsPanel extends JPanel {
     public ShowDiveSpotsPanel(MainFrame mainFrame, DiveSpotList diveSpotList) {
         setLayout(new BorderLayout());
 
-        // Top panel with back button
+        // Top panel with back button.
         add(new BackButtonPanel(e -> mainFrame.showMainMenu()), BorderLayout.NORTH);
 
         // Center panel to display the list of diveSpots
