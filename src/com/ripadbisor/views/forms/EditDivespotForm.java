@@ -26,6 +26,7 @@ import com.ripadbisor.models.Divespot;
 import com.ripadbisor.models.DivespotList;
 import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.views.MainFrame;
+import com.ripadbisor.views.components.BackButtonPanel;
 import com.ripadbisor.views.components.DivespotPanel;
 
 public class EditDivespotForm extends JPanel {
@@ -41,16 +42,7 @@ public class EditDivespotForm extends JPanel {
         setLayout(new BorderLayout());
 
         // Top panel with back button
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JButton backButton = new JButton("← Menu");
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.showMainMenu(); // Return to the main menu
-            }
-        });
-        topPanel.add(backButton);
-        add(topPanel, BorderLayout.NORTH);
+        add(new BackButtonPanel(e -> mainFrame.showMainMenu()), BorderLayout.NORTH);
 
         // Center panel to display the list of divespots
         divespotListPanel = new JPanel();
