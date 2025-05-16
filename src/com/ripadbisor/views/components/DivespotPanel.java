@@ -84,13 +84,13 @@ public class DivespotPanel extends JPanel {
         // Add breathing space
         rightPanel.add(Box.createVerticalStrut(10));
 
-        // Delete button
+        // Button
         if (button != null) {
             button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
             button.setBackground(new Color(255, 102, 102)); // Light red background
             button.setForeground(Color.WHITE); // White text
             button.setFocusPainted(false); // Remove focus border
-            button.setFont(new Font("Arial", Font.BOLD, 12)); // Bold font for the button
+            button.setFont(new Font("Arial", Font.BOLD, 22)); // Bold font for the button
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
             rightPanel.add(button);
         }
