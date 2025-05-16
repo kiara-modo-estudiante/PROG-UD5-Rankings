@@ -1,5 +1,5 @@
 /**
-* The Divespot class represents a diving spot with various attributes
+* The DiveSpot class represents a diving spot with various attributes
 * such as its name, location, maximum depth, recommended diving season,
 * whether it has marine life, and its rating.
 *
@@ -9,7 +9,7 @@
 */
 package com.ripadbisor.models;
 
-public class Divespot {
+public class DiveSpot {
 
     private String name;
     private String location;
@@ -18,7 +18,7 @@ public class Divespot {
     private boolean hasMarineLife;
     private int rating;
 
-    public Divespot(String name, String location, int maxDepth, String recommendedSeason, boolean hasMarineLife,
+    public DiveSpot(String name, String location, int maxDepth, String recommendedSeason, boolean hasMarineLife,
             int rating) {
         this.name = name;
         this.location = location;

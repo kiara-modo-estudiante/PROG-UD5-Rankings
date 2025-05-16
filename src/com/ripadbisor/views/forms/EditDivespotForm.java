@@ -1,18 +1,18 @@
 /**
- * The EditDivespotForm class represents a Swing-based user interface panel
- * for editing and managing a list of divespots. It provides functionality
- * to display a list of divespots, edit their details, and update the list
+ * The EditDiveSpotForm class represents a Swing-based user interface panel
+ * for editing and managing a list of diveSpots. It provides functionality
+ * to display a list of diveSpots, edit their details, and update the list
  * dynamically. This form is part of a larger application and interacts with
- * the MainFrame and DivespotList classes.
+ * the MainFrame and DiveSpotList classes.
  *
  * <p>Key Features:
- * - Displays a list of divespots with an option to edit each one.
- * - Provides a dialog-based form for editing divespot details.
+ * - Displays a list of diveSpots with an option to edit each one.
+ * - Provides a dialog-based form for editing diveSpot details.
  * - Updates the list dynamically after edits.
  * - Includes a success message display for user feedback.
  *
  * <p>Purpose:
- * This class is designed to allow users to manage and edit divespot information
+ * This class is designed to allow users to manage and edit diveSpot information
  * in a user-friendly graphical interface, enhancing the overall usability of
  * the application.
  */
@@ -22,32 +22,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.ripadbisor.models.Divespot;
-import com.ripadbisor.models.DivespotList;
+import com.ripadbisor.models.DiveSpot;
+import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
-import com.ripadbisor.views.components.DivespotPanel;
+import com.ripadbisor.views.components.DiveSpotPanel;
 
-public class EditDivespotForm extends JPanel {
+public class EditDiveSpotForm extends JPanel {
     private MainFrame mainFrame;
-    private DivespotList divespotList;
+    private DiveSpotList diveSpotList;
     private JLabel successMessageLabel;
-    private JPanel divespotListPanel;
+    private JPanel diveSpotListPanel;
 
-    public EditDivespotForm(MainFrame mainFrame, DivespotList divespotList) {
+    public EditDiveSpotForm(MainFrame mainFrame, DiveSpotList diveSpotList) {
         this.mainFrame = mainFrame;
-        this.divespotList = divespotList;
+        this.diveSpotList = diveSpotList;
 
         setLayout(new BorderLayout());
 
         // Top panel with back button
         add(new BackButtonPanel(e -> mainFrame.showMainMenu()), BorderLayout.NORTH);
 
-        // Center panel to display the list of divespots
-        divespotListPanel = new JPanel();
-        divespotListPanel.setLayout(new BoxLayout(divespotListPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(divespotListPanel);
+        // Center panel to display the list of diveSpots
+        diveSpotListPanel = new JPanel();
+        diveSpotListPanel.setLayout(new BoxLayout(diveSpotListPanel, BoxLayout.Y_AXIS));
+        JScrollPane scrollPane = new JScrollPane(diveSpotListPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(scrollPane, BorderLayout.CENTER);
 
@@ -58,46 +58,46 @@ public class EditDivespotForm extends JPanel {
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // Populate the list of divespots
-        refreshDivespotList();
+        // Populate the list of diveSpots
+        refreshDiveSpotList();
     }
 
     /**
-     * Refreshes the list of divespots displayed in the panel.
-     * This method clears the existing divespot list and repopulates it
-     * with the current divespots from the DivespotList model.
+     * Refreshes the list of diveSpots displayed in the panel.
+     * This method clears the existing diveSpot list and repopulates it
+     * with the current diveSpots from the DiveSpotList model.
      */
-    private void refreshDivespotList() {
-        divespotListPanel.removeAll(); // Clear the panel before repopulating
+    private void refreshDiveSpotList() {
+        diveSpotListPanel.removeAll(); // Clear the panel before repopulating
 
-        for (Divespot divespot : divespotList.getDivespots()) {
+        for (DiveSpot diveSpot : diveSpotList.getDiveSpots()) {
             JButton editButton = new JButton("📝");
             editButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    showEditForm(divespot); // Open the edit form for the selected divespot
+                    showEditForm(diveSpot); // Open the edit form for the selected diveSpot
                 }
             });
 
-            // Use DivespotPanel to display the divespot
-            DivespotPanel divespotPanel = new DivespotPanel(divespot, editButton);
-            divespotListPanel.add(divespotPanel);
+            // Use DiveSpotPanel to display the diveSpot
+            DiveSpotPanel diveSpotPanel = new DiveSpotPanel(diveSpot, editButton);
+            diveSpotListPanel.add(diveSpotPanel);
         }
 
-        divespotListPanel.revalidate();
-        divespotListPanel.repaint();
+        diveSpotListPanel.revalidate();
+        diveSpotListPanel.repaint();
     }
 
     /**
-     * Displays a dialog for editing the details of a selected divespot.
+     * Displays a dialog for editing the details of a selected diveSpot.
      * This method creates a new dialog with form fields pre-filled with
-     * the current divespot information, allowing the user to edit and save changes.
+     * the current diveSpot information, allowing the user to edit and save changes.
      *
-     * @param divespot The divespot to be edited.
+     * @param diveSpot The diveSpot to be edited.
      */
-    private void showEditForm(Divespot divespot) {
-        // Create a dialog for editing the divespot
-        JDialog editDialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this), "Edit Divespot", true);
+    private void showEditForm(DiveSpot diveSpot) {
+        // Create a dialog for editing the diveSpot
+        JDialog editDialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this), "Edit DiveSpot", true);
         editDialog.setSize(400, 300);
         editDialog.setLayout(new BorderLayout());
 
@@ -105,12 +105,12 @@ public class EditDivespotForm extends JPanel {
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JTextField nameField = new JTextField(divespot.getName());
-        JTextField locationField = new JTextField(divespot.getLocation());
-        JTextField maxDepthField = new JTextField(String.valueOf(divespot.getMaxDepth()));
-        JTextField seasonField = new JTextField(divespot.getRecommendedSeason());
-        JCheckBox marineLifeCheckBox = new JCheckBox("Marine Life", divespot.isHasMarineLife());
-        JTextField ratingField = new JTextField(String.valueOf(divespot.getRating()));
+        JTextField nameField = new JTextField(diveSpot.getName());
+        JTextField locationField = new JTextField(diveSpot.getLocation());
+        JTextField maxDepthField = new JTextField(String.valueOf(diveSpot.getMaxDepth()));
+        JTextField seasonField = new JTextField(diveSpot.getRecommendedSeason());
+        JCheckBox marineLifeCheckBox = new JCheckBox("Marine Life", diveSpot.isHasMarineLife());
+        JTextField ratingField = new JTextField(String.valueOf(diveSpot.getRating()));
 
         formPanel.add(new JLabel("Name:"));
         formPanel.add(nameField);
@@ -144,19 +144,19 @@ public class EditDivespotForm extends JPanel {
                     // Validate that the rating is between 1 and 5
                     rating = InputValidator.validateRating(rating, editDialog);
 
-                    // Update the divespot with validated values
-                    divespot.setName(name);
-                    divespot.setLocation(location);
-                    divespot.setMaxDepth(maxDepth);
-                    divespot.setRecommendedSeason(season);
-                    divespot.setHasMarineLife(hasMarineLife);
-                    divespot.setRating(rating);
+                    // Update the diveSpot with validated values
+                    diveSpot.setName(name);
+                    diveSpot.setLocation(location);
+                    diveSpot.setMaxDepth(maxDepth);
+                    diveSpot.setRecommendedSeason(season);
+                    diveSpot.setHasMarineLife(hasMarineLife);
+                    diveSpot.setRating(rating);
 
-                    successMessageLabel.setText("Successfully updated: " + divespot.getName());
+                    successMessageLabel.setText("Successfully updated: " + diveSpot.getName());
                     successMessageLabel.revalidate();
                     successMessageLabel.repaint();
 
-                    refreshDivespotList(); // Refresh the list after editing
+                    refreshDiveSpotList(); // Refresh the list after editing
                     editDialog.dispose(); // Close the dialog
                 } catch (IllegalArgumentException ex) {
                     // Logic on Input Validator class

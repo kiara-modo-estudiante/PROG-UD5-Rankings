@@ -1,39 +1,39 @@
 /**
- * The MainFrame class represents the main window of the Divespot Manager application.
+ * The MainFrame class represents the main window of the DiveSpot Manager application.
  * It serves as the primary user interface, allowing users to interact with the application
- * to manage and display information about divespots.
+ * to manage and display information about diveSpots.
  *
  * This class extends JFrame and utilizes a BorderLayout to organize its components.
- * It includes a form for inputting divespot data, a display area for showing divespot
- * information, and integrates with the DivespotList model to manage the data.
+ * It includes a form for inputting diveSpot data, a display area for showing diveSpot
+ * information, and integrates with the DiveSpotList model to manage the data.
  *
  * Key Components:
- * - DivespotForm: A form for user input, located at the top of the frame.
- * - JTextArea: A non-editable text area for displaying divespot information.
- * - DivespotList: A model that stores and manages the list of divespots.
+ * - DiveSpotForm: A form for user input, located at the top of the frame.
+ * - JTextArea: A non-editable text area for displaying diveSpot information.
+ * - DiveSpotList: A model that stores and manages the list of diveSpots.
  */
 package com.ripadbisor.views;
 
 import javax.swing.*;
 import java.awt.*;
-import com.ripadbisor.models.DivespotList;
-import com.ripadbisor.views.forms.DeleteDivespotForm;
-import com.ripadbisor.views.forms.AddDivespotForm;
-import com.ripadbisor.views.forms.EditDivespotForm;
+import com.ripadbisor.models.DiveSpotList;
+import com.ripadbisor.views.forms.DeleteDiveSpotForm;
+import com.ripadbisor.views.forms.AddDiveSpotForm;
+import com.ripadbisor.views.forms.EditDiveSpotForm;
 
 public class MainFrame extends JFrame {
     private JTextArea displayArea;
-    private DivespotList divespotList;
+    private DiveSpotList diveSpotList;
     private JPanel currentPanel;
 
     public MainFrame() {
-        // Initialize the DivespotList model
-        setTitle("Divespot Manager");
+        // Initialize the DiveSpotList model
+        setTitle("DiveSpot Manager");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        divespotList = new DivespotList();
+        diveSpotList = new DiveSpotList();
 
         displayArea = new JTextArea();
         displayArea.setEditable(false);
@@ -53,52 +53,52 @@ public class MainFrame extends JFrame {
         repaint();
     }
 
-    public void showAddDivespotForm() {
+    public void showAddDiveSpotForm() {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        currentPanel = new AddDivespotForm(this, divespotList);
+        currentPanel = new AddDiveSpotForm(this, diveSpotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
 
-    public void showEditDivespotForm() {
+    public void showEditDiveSpotForm() {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        currentPanel = new EditDivespotForm(this, divespotList);
+        currentPanel = new EditDiveSpotForm(this, diveSpotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
 
-    public void showAllDivespots() {
+    public void showAllDiveSpots() {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        currentPanel = new ShowDivespotsPanel(this, divespotList);
+        currentPanel = new ShowDiveSpotsPanel(this, diveSpotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
 
-    public void showDeleteDivespotForm() {
+    public void showDeleteDiveSpotForm() {
         if (currentPanel != null) {
             remove(currentPanel);
         }
-        currentPanel = new DeleteDivespotForm(this, divespotList);
+        currentPanel = new DeleteDiveSpotForm(this, diveSpotList);
         add(currentPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
 
     /**
-     * Displays divespot information in the display area.
+     * Displays diveSpot information in the display area.
      *
      * @param info The information to display.
      */
-    public void displayDivespotInfo(String info) {
+    public void displayDiveSpotInfo(String info) {
         displayArea.append(info + "\n");
     }
 }

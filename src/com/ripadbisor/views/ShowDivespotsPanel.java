@@ -1,16 +1,16 @@
 /**
- * The ShowDivespotsPanel class is a custom JPanel that displays a list of divespots
+ * The ShowDiveSpotsPanel class is a custom JPanel that displays a list of diveSpots
  * in a scrollable panel, sorted by their rating in descending order. It includes a 
  * back button to navigate back to the main menu.
  *
  * Purpose:
- * - Provides a user interface for viewing divespots in a structured and organized manner.
- * - Displays divespots using individual DivespotPanel components.
+ * - Provides a user interface for viewing diveSpots in a structured and organized manner.
+ * - Displays diveSpots using individual DiveSpotPanel components.
  * - Allows navigation back to the main menu via a back button.
  *
  * Components:
  * - A top panel containing a back button for navigation.
- * - A center panel with a scrollable list of divespots, sorted by rating.
+ * - A center panel with a scrollable list of diveSpots, sorted by rating.
  */
 package com.ripadbisor.views;
 
@@ -18,38 +18,38 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.ripadbisor.models.Divespot;
-import com.ripadbisor.models.DivespotList;
+import com.ripadbisor.models.DiveSpot;
+import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.views.components.BackButtonPanel;
-import com.ripadbisor.views.components.DivespotPanel;
+import com.ripadbisor.views.components.DiveSpotPanel;
 
-public class ShowDivespotsPanel extends JPanel {
-    public ShowDivespotsPanel(MainFrame mainFrame, DivespotList divespotList) {
+public class ShowDiveSpotsPanel extends JPanel {
+    public ShowDiveSpotsPanel(MainFrame mainFrame, DiveSpotList diveSpotList) {
         setLayout(new BorderLayout());
 
         // Top panel with back button
         add(new BackButtonPanel(e -> mainFrame.showMainMenu()), BorderLayout.NORTH);
 
-        // Center panel to display the list of divespots
-        JPanel divespotListPanel = new JPanel();
-        divespotListPanel.setLayout(new BoxLayout(divespotListPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(divespotListPanel);
+        // Center panel to display the list of diveSpots
+        JPanel diveSpotListPanel = new JPanel();
+        diveSpotListPanel.setLayout(new BoxLayout(diveSpotListPanel, BoxLayout.Y_AXIS));
+        JScrollPane scrollPane = new JScrollPane(diveSpotListPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(scrollPane, BorderLayout.CENTER);
 
-        // Sort divespots by rating (descending order)
-        List<Divespot> sortedDivespots = divespotList.getDivespots().stream()
+        // Sort diveSpots by rating (descending order)
+        List<DiveSpot> sortedDiveSpots = diveSpotList.getDiveSpots().stream()
                 .sorted((d1, d2) -> Integer.compare(d2.getRating(), d1.getRating()))
                 .collect(Collectors.toList());
 
-        // Populate the panel with sorted divespots
-        for (Divespot divespot : sortedDivespots) {
-            // Use DivespotPanel to display each divespot
-            DivespotPanel divespotPanel = new DivespotPanel(divespot, null); // No button needed
-            divespotListPanel.add(divespotPanel);
+        // Populate the panel with sorted diveSpots
+        for (DiveSpot diveSpot : sortedDiveSpots) {
+            // Use DiveSpotPanel to display each diveSpot
+            DiveSpotPanel diveSpotPanel = new DiveSpotPanel(diveSpot, null); // No button needed
+            diveSpotListPanel.add(diveSpotPanel);
         }
 
-        divespotListPanel.revalidate();
-        divespotListPanel.repaint();
+        diveSpotListPanel.revalidate();
+        diveSpotListPanel.repaint();
     }
 }

@@ -2,10 +2,10 @@ package com.ripadbisor.views.components;
 
 import javax.swing.*;
 import java.awt.*;
-import com.ripadbisor.models.Divespot;
+import com.ripadbisor.models.DiveSpot;
 
-public class DivespotPanel extends JPanel {
-    public DivespotPanel(Divespot divespot, JButton button) {
+public class DiveSpotPanel extends JPanel {
+    public DiveSpotPanel(DiveSpot diveSpot, JButton button) {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding around the panel
         setBackground(new Color(245, 245, 245)); // Light gray background
@@ -17,14 +17,14 @@ public class DivespotPanel extends JPanel {
         leftPanel.setBackground(new Color(245, 245, 245));
 
         // Name
-        JLabel nameLabel = new JLabel(divespot.getName());
+        JLabel nameLabel = new JLabel(diveSpot.getName());
         nameLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Larger font for the name
         nameLabel.setForeground(new Color(50, 50, 50)); // Dark gray text
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         leftPanel.add(nameLabel);
 
         // Location
-        JLabel locationLabel = new JLabel("📍 " + divespot.getLocation());
+        JLabel locationLabel = new JLabel("📍 " + diveSpot.getLocation());
         locationLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         locationLabel.setForeground(new Color(100, 100, 100)); // Medium gray text
         locationLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -34,21 +34,21 @@ public class DivespotPanel extends JPanel {
         leftPanel.add(Box.createVerticalStrut(10));
 
         // Depth
-        JLabel depthLabel = new JLabel("Depth: " + divespot.getMaxDepth() + " meters");
+        JLabel depthLabel = new JLabel("Depth: " + diveSpot.getMaxDepth() + " meters");
         depthLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         depthLabel.setForeground(new Color(80, 80, 80)); // Slightly darker gray
         depthLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         leftPanel.add(depthLabel);
 
         // Recommended season
-        JLabel seasonLabel = new JLabel("Season: " + divespot.getRecommendedSeason());
+        JLabel seasonLabel = new JLabel("Season: " + diveSpot.getRecommendedSeason());
         seasonLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         seasonLabel.setForeground(new Color(80, 80, 80));
         seasonLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         leftPanel.add(seasonLabel);
 
         // Marine life
-        String marineLifeText = divespot.isHasMarineLife() ? "Marine Life: Yes 🐬" : "Marine Life: No 🚤";
+        String marineLifeText = diveSpot.isHasMarineLife() ? "Marine Life: Yes 🐬" : "Marine Life: No 🚤";
         JLabel marineLifeLabel = new JLabel(marineLifeText);
         marineLifeLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         marineLifeLabel.setForeground(new Color(80, 80, 80));
@@ -74,7 +74,7 @@ public class DivespotPanel extends JPanel {
         JPanel starsPanel = new JPanel();
         starsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 0));
         starsPanel.setBackground(new Color(245, 245, 245));
-        for (int i = 0; i < divespot.getRating(); i++) {
+        for (int i = 0; i < diveSpot.getRating(); i++) {
             JLabel starLabel = new JLabel("⭐");
             starLabel.setFont(new Font("Arial", Font.PLAIN, 14));
             starsPanel.add(starLabel);

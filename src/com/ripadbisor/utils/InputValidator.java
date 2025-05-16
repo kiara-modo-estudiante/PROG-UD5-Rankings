@@ -47,7 +47,7 @@ public class InputValidator {
     }
 
     /**
-     * Validates that a divespot's rating is between 1 and 5, showing an error
+     * Validates that a diveSpot's rating is between 1 and 5, showing an error
      * message if it is not.
      *
      * @param rating      the rating to validate
