@@ -1,3 +1,17 @@
+/**
+ * The DiveSpotPanel class is a custom JPanel component designed to display detailed
+ * information about a dive spot, including its name, location, depth, recommended season,
+ * marine life presence, and rating. It also provides an optional button for user interaction.
+ *
+ * Key features:
+ * - Displays dive spot details such as name, location, depth, season, and marine life presence.
+ * - Shows a star-based rating system.
+ * - Includes an optional button for additional actions.
+ * - Styled with consistent fonts, colors, and layout for a polished UI.
+ *
+ * @param diveSpot The DiveSpot object containing the details to be displayed.
+ * @param button   An optional JButton for user interaction, such as deleting or editing the dive spot.
+ */
 package com.ripadbisor.views.components;
 
 import javax.swing.*;

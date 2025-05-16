@@ -1,3 +1,14 @@
+/**
+ * The MainMenu class represents the main menu panel of the application.
+ * It extends JPanel and provides a user interface with buttons for various
+ * actions related to managing dive spots, such as adding, editing, showing,
+ * and deleting dive spots. It also includes an option to exit the application.
+ * 
+ * Purpose:
+ * - To serve as the main navigation menu for the application.
+ * - To provide an intuitive interface for users to perform actions on dive spots.
+ * - To handle user interactions and delegate actions to the MainFrame.
+ */
 package com.ripadbisor.views.panels;
 
 import javax.swing.*;

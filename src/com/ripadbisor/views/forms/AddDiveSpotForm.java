@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.utils.InputValidator;
+import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
 
@@ -92,8 +93,7 @@ public class AddDiveSpotForm extends JPanel {
 
         // Bottom panel with success message
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        successMessageLabel = new JLabel(""); // Initially empty
-        successMessageLabel.setForeground(new Color(0, 128, 0)); // Green color for success
+        successMessageLabel = UIUtils.createMessageLabel(new Color(0, 128, 0));
         bottomPanel.add(successMessageLabel);
         add(bottomPanel, BorderLayout.SOUTH);
 
