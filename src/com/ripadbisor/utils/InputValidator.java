@@ -5,13 +5,10 @@ package com.ripadbisor.utils;
 
 import java.awt.Component;
 
-import javax.swing.*;
-
 public class InputValidator {
 
     /**
-     * Parses a string to an integer, showing an error message if the input is
-     * invalid.
+     * Parses a string to an integer.
      *
      * @param input       the string to parse
      * @param parentFrame the parent frame for the error dialog
@@ -19,17 +16,11 @@ public class InputValidator {
      * @throws NumberFormatException if the input is not a valid integer
      */
     public static int parseInt(String input, Component parentFrame) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(parentFrame, "Please, insert a valid number.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            throw e;
-        }
+        return Integer.parseInt(input);
     }
 
     /**
-     * Validates that a string is not empty, showing an error message if it is.
+     * Validates that a string is not empty.
      *
      * @param input       the string to validate
      * @param fieldName   the name of the field for the error message
@@ -39,16 +30,13 @@ public class InputValidator {
      */
     public static String validateNotEmpty(String input, String fieldName, Component parentFrame) {
         if (input == null || input.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(parentFrame, "The field '" + fieldName + "' can't be empty.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException("The field '" + fieldName + "' can't be empty.");
         }
         return input.trim();
     }
 
     /**
-     * Validates that a diveSpot's rating is between 1 and 5, showing an error
-     * message if it is not.
+     * Validates that a diveSpot's rating is between 1 and 5.
      *
      * @param rating      the rating to validate
      * @param parentFrame the parent frame for the error dialog
@@ -57,34 +45,28 @@ public class InputValidator {
      */
     public static int validateRating(int rating, Component parentFrame) {
         if (rating < 1 || rating > 5) {
-            JOptionPane.showMessageDialog(parentFrame, "The rating must be between 1 and 5.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException("The rating must be between 1 and 5.");
         }
         return rating;
     }
 
     /**
-     * Validates that a diveSpot's depth is between 0 and 100, showing an error
-     * message if it is not.
+     * Validates that a diveSpot's depth is between 0 and 150.
      *
      * @param depth       the depth to validate
      * @param parentFrame the parent frame for the error dialog
      * @return the validated depth
-     * @throws IllegalArgumentException if the depth is not between 0 and 100
+     * @throws IllegalArgumentException if the depth is not between 0 and 150
      */
     public static int validateDepth(int depth, Component parentFrame) {
         if (depth < 0 || depth > 150) {
-            JOptionPane.showMessageDialog(parentFrame, "The depth must be between 0 and 150.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException("The depth must be between 0 and 150.");
         }
         return depth;
     }
 
     /**
-     * Validates that the recommended season is Winter, Spring, Summer, or Autumn,
-     * showing an error message if it is not.
+     * Validates that the recommended season is Winter, Spring, Summer, or Autumn.
      *
      * @param season      the season to validate
      * @param parentFrame the parent frame for the error dialog
@@ -94,9 +76,6 @@ public class InputValidator {
     public static String validateSeason(String season, Component parentFrame) {
         if (!season.equalsIgnoreCase("Winter") && !season.equalsIgnoreCase("Spring")
                 && !season.equalsIgnoreCase("Summer") && !season.equalsIgnoreCase("Autumn")) {
-            JOptionPane.showMessageDialog(parentFrame,
-                    "The recommended season must be Winter, Spring, Summer or Autumn.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException(
                     "The recommended season must be Winter, Spring, Summer or Autumn.");
         }

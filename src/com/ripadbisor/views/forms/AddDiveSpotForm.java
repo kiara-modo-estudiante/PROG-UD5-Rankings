@@ -19,7 +19,6 @@ import java.awt.event.ActionListener;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.utils.FormValidator;
-import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
@@ -122,7 +121,8 @@ public class AddDiveSpotForm extends JPanel {
                     marineLifeCheckBox.setSelected(false);
                     ratingField.setText("");
                 } catch (IllegalArgumentException ex) {
-                    // Logic on Input Validator class
+                    JOptionPane.showMessageDialog(formPanel, ex.getMessage(), "Validation Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
