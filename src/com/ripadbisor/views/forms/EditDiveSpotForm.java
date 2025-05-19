@@ -25,7 +25,6 @@ import java.awt.event.ActionListener;
 import com.ripadbisor.models.DiveSpot;
 import com.ripadbisor.models.DiveSpotList;
 import com.ripadbisor.utils.FormValidator;
-import com.ripadbisor.utils.InputValidator;
 import com.ripadbisor.utils.UIUtils;
 import com.ripadbisor.views.MainFrame;
 import com.ripadbisor.views.components.BackButtonPanel;
@@ -151,7 +150,8 @@ public class EditDiveSpotForm extends JPanel {
                     refreshDiveSpotList(); // Refresh the list after editing
                     editDialog.dispose(); // Close the dialog
                 } catch (IllegalArgumentException ex) {
-                    // Logic on Input Validator class
+                    JOptionPane.showMessageDialog(editDialog, ex.getMessage(), "Validation Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
