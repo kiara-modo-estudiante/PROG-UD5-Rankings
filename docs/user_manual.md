@@ -40,6 +40,8 @@ This application allows you to manage dive spots through a graphical interface. 
 
 For detailed instructions on installing Java, please refer to [How do I install Java?](how%20do%20i%20install%20java.pdf).
 
+If you would like to read the PDF document from your IDE, install the following plugin: [PDF Viewer](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf).
+
 ## Running the Program
 
 To run the program whose executable file is `App.java`, follow these steps:
